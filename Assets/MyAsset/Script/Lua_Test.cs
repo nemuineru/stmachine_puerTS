@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using XLua;
+using Puerts;
 
 public class Lua_Test : MonoBehaviour
 {
@@ -30,7 +30,7 @@ public class Lua_Test : MonoBehaviour
         end
     ";
 
-    [CSharpCallLua]
+    //[CSharpCallLua]
     public delegate int[] verd();
 
     // Start is called before the first frame update
@@ -40,14 +40,15 @@ public class Lua_Test : MonoBehaviour
         LuaExecute(LuaScript_2);
     }
 
+    //currently its not used by Lua so I have to rework around!
     void LuaExecute(string stri)
     {        
-        Lua_OnLoad.main.LEnv.DoString(stri);
-        var exampleMethod = Lua_OnLoad.main.LEnv.Global.Get<verd>("exampleMeth");    
-        int[] result = exampleMethod.Invoke();
-        foreach (int result2 in result)
-        {
-            Debug.Log(result2);
-        }
+        // Lua_OnLoad.main.LEnv.DoString(stri);
+        // var exampleMethod = Lua_OnLoad.main.LEnv.Global.Get<verd>("exampleMeth");    
+        // int[] result = exampleMethod.Invoke();
+        // foreach (int result2 in result)
+        // {
+        //     Debug.Log(result2);
+        // }
     }
 }

@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
-using XLua;
+using Puerts;
+
 
 [System.Serializable]
 public class lua_Read
@@ -20,13 +21,12 @@ public class lua_Read
     //QueuedStateIDsは必ずint型のテーブルを返す値として創出.
     //また、Lua内でステートを読み込む前にStateDefParamsに値を事前登録させる.
 
-    [CSharpCallLua]
     public interface CalcValues
     {
-        [CSharpCallLua]
+        //[CSharpCallLua]
         public delegate int[] QueuedStateID(Entity entity);
         
-        [CSharpCallLua]
+        //[CSharpCallLua]
         public delegate object[] luaOutParams(Entity entity);
 
         public class Parameter
@@ -81,7 +81,7 @@ public class lua_Read
 
 //Lua_Conditionに登録, 値を設定.
 //Entityごとにこの値が設定されると考える.
-[LuaCallCSharp]
+//[]
 public class LC
 {
     public LC()
@@ -115,7 +115,7 @@ public class LC
         //Debug.Log(et.stateTime);
         return et.animationFrameTime;
     }
-    
+
     public float CheckAnimEndTime(Entity et)
     {
         //Debug.Log(et.stateTime);
@@ -132,7 +132,7 @@ public class LC
     {
         return et.CurrentStateID;
     }
-    
+
     public int CheckAnimID(Entity et)
     {
         return et.animID;

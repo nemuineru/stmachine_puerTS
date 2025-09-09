@@ -8,8 +8,6 @@ using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine.Analytics;
-using XLua;
-using XLua.LuaDLL;
 using System;
 using BehaviorDesigner.Runtime.Tasks.Unity.UnityGameObject;
 
@@ -123,8 +121,9 @@ public class stParams<Type>
 
     public Type valueGet(List<object> loadParams, Entity entity)
     {
-        LuaEnv env = Lua_OnLoad.main.LEnv;
+        //LuaEnv env = Lua_OnLoad.main.LEnv;
         Type retValue = stParamValue;
+        /*
         switch (loadTypes)
         {
             //Conditionなら読み出されたLuaConditionに登録されたvalue配列から..
@@ -148,6 +147,7 @@ public class stParams<Type>
                 break;
 
         }
+        */
         return retValue;
     }
 
@@ -184,6 +184,7 @@ public class stateID
     public bool valueGet(int[] loadID, Entity entity)
     {
         bool retValue = false;
+        /*
         LuaEnv env = Lua_OnLoad.main.LEnv;
         //Luaを使用するなら
         if (useLua && stLuaLoads != "")
@@ -196,6 +197,7 @@ public class stateID
         {
             retValue = (loadID.Count() > 0 && loadID.Any(i => i == value));
         }
+        */
         return retValue;
     }
 }
@@ -216,10 +218,10 @@ public class StateDef
 
     public string preStateVerdictName;
     public string ParamLoadName;
-
+    /*
     private LuaTable _stateLoadTables;
     private LuaTable _stateParamTables;
-
+    */
     //それぞれMoveType
     public char stateType;
     public char moveType;
@@ -250,10 +252,11 @@ public class StateDef
         return retDef;
     }
 
-    LuaEnv env;
+    //LuaEnv env;
 
     void OnInitDef()
     {
+        /*
         Debug.Log("Generating Metatables on " + StateDefID);
         env = Lua_OnLoad.main.LEnv;
         env.Global.Set("LC", new LC());
@@ -273,6 +276,7 @@ public class StateDef
         //別のメタテーブルに登録.
         _stateParamTables.SetMetaTable(_sParamT);
         _sParamT.Dispose();
+        */
     }
 
     //Execute時のLuaのStateIDをそれぞれのStateDefに保存 - これ、掴みの時のEntity参照時の設定時に重複発生しそー..    
@@ -302,7 +306,7 @@ public class StateDef
                 }
         }
         switch (physType)
-        {             
+        {
             case 's':
             case 'S':
                 {
@@ -323,7 +327,7 @@ public class StateDef
                 }
         }
         switch (moveType)
-        {             
+        {
             case 'i':
             case 'I':
                 {
@@ -347,6 +351,7 @@ public class StateDef
 
     public void Execute(Entity entity)
     {
+        /*
         //stateTimeが0の時, 恒常設定されたステートパラメータを確認
         if (entity.stateTime == 0)
         {
@@ -432,33 +437,11 @@ public class StateDef
             }
 
 
-
-
-            //stateID内にLuaの設定値をセットアップ.
-
-            /*
-            if (ExecuteStateIDs.Count() > 0)
-            {
-                //def中にあるstateを全部リストアップ
-                foreach (StateController state in StateList)
-                {
-                    state.entity = entity;
-                    // Debug.Log("Finding stateID " + state.stateID + "," + state.ToString());
-
-                    //Lua設定値の中から..という
-                    if (ExecuteStateIDs.Any(i => state.isIDValid(i)))
-                    {
-                        state.loadParams = luaOutputParams;
-                        Debug.Log("Executed " + state.ToString());
-                        state.OnExecute();
-                    }
-                }
-            }
-            */
-
             env.Tick();
         }
+        
 
+            */
     }
 }
 

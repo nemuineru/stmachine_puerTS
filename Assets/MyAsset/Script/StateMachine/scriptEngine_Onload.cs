@@ -3,21 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using XLua;
+using Puerts;
 
 
 //lua enviroments loads as static.
 //its because of the convenience.
 
-public class Lua_OnLoad : MonoBehaviour
+public class scriptEngine_Onload : MonoBehaviour
 {
-    public static Lua_OnLoad main;
-    public LuaEnv LEnv;
+    public static scriptEngine_Onload main;
+    //public Puerts LEnv;
     // Start is called before the first frame update
     void Awake()
     {
         main = this;
-        LEnv = new LuaEnv();
+        //LEnv = new LuaEnv();
     }
 
     // Update is called once per frame
@@ -28,6 +28,6 @@ public class Lua_OnLoad : MonoBehaviour
 
     void OnDestroy()
     {
-        LEnv.Dispose();
+        //LEnv.Dispose();
     }
 }
