@@ -12,12 +12,18 @@ using Puerts;
 public class scriptEngine_Onload : MonoBehaviour
 {
     public static scriptEngine_Onload main;
-    //public Puerts LEnv;
+    public Puerts.JsEnv scEnv;
     // Start is called before the first frame update
     void Awake()
     {
         main = this;
-        //LEnv = new LuaEnv();
+        scEnv = new Puerts.JsEnv();
+    }
+    void Start()
+    {
+        scEnv.Eval(@"
+        console.log('hello world');
+        ");
     }
 
     // Update is called once per frame

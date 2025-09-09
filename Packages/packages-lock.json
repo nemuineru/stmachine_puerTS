@@ -6,6 +6,20 @@
       "source": "local",
       "dependencies": {}
     },
+    "com.tencent.puerts.webgl": {
+      "version": "file:C:/Users/sutea/source/repos/puerts_unity_webgl_demo/packages/webgl/upm",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {
+        "com.tencent.puerts.core": "2.0.5"
+      }
+    },
+    "com.tencent.puerts.webgl.jsbuild": {
+      "version": "file:C:/Users/sutea/source/repos/puerts_unity_webgl_demo/packages/webgl-jsbuild/upm",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
     "com.unity.2d.animation": {
       "version": "9.1.0",
       "depth": 1,
