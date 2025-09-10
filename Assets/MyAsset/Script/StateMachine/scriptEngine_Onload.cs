@@ -11,6 +11,7 @@ using Puerts;
 
 public class scriptEngine_Onload : MonoBehaviour
 {
+    public TMPro.TMP_Text textMesh;
     public static scriptEngine_Onload main;
     public Puerts.JsEnv scEnv;
     // Start is called before the first frame update
