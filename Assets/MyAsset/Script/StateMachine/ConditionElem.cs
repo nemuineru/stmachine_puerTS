@@ -7,15 +7,15 @@ using Puerts;
 
 
 [System.Serializable]
-public class lua_Read
+public class script_Read
 {    
-    public lua_Read(string insertScript)
+    public script_Read(string insertScript)
     {
         LuaScript = insertScript;
     }
     public string LuaScript;
     
-    public LC lua_Condition;
+    public SC_CALC lua_Condition;
     public Entity entity;
 
     //QueuedStateIDsは必ずint型のテーブルを返す値として創出.
@@ -82,9 +82,9 @@ public class lua_Read
 //Lua_Conditionに登録, 値を設定.
 //Entityごとにこの値が設定されると考える.
 //[]
-public class LC
+public class SC_CALC
 {
-    public LC()
+    public SC_CALC()
     {
 
     }

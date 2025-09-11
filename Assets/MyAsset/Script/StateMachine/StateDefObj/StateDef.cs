@@ -94,7 +94,7 @@ public class stParams<Type>
 
     //
     [SerializeField]
-    LC LuaCondition = new LC();
+    SC_CALC LuaCondition = new SC_CALC();
 
     //Luaで読み出すメソッド名
     [SerializeField]
@@ -184,8 +184,8 @@ public class stateID
     public bool valueGet(int[] loadID, Entity entity)
     {
         bool retValue = false;
+        Puerts.JsEnv env = scriptEngine_Onload.main.scEnv;
         /*
-        LuaEnv env = Lua_OnLoad.main.LEnv;
         //Luaを使用するなら
         if (useLua && stLuaLoads != "")
         {
@@ -218,10 +218,8 @@ public class StateDef
 
     public string preStateVerdictName;
     public string ParamLoadName;
-    /*
-    private LuaTable _stateLoadTables;
-    private LuaTable _stateParamTables;
-    */
+    private List<int> _stateLoadTables = new List<int>();
+    private List<object> _stateParamTables;
     //それぞれMoveType
     public char stateType;
     public char moveType;
@@ -252,15 +250,19 @@ public class StateDef
         return retDef;
     }
 
-    //LuaEnv env;
+    Puerts.JsEnv env;
 
     void OnInitDef()
     {
-        /*
-        Debug.Log("Generating Metatables on " + StateDefID);
-        env = Lua_OnLoad.main.LEnv;
-        env.Global.Set("LC", new LC());
+        //Debug.Log("Generating Metatables on " + StateDefID);
+        env = scriptEngine_Onload.main.scEnv;
 
+        //Do I need to set-up global variables?
+        //env.Global.Set("LC", new LC());
+        
+        //if the puerTS needs those variable tables, that might be proble-mo.
+
+        /*
         //StateID用にメタテーブルを作成.
         var _sLoadT = env.NewTable();
         _stateLoadTables = env.NewTable();
@@ -351,7 +353,6 @@ public class StateDef
 
     public void Execute(Entity entity)
     {
-        /*
         //stateTimeが0の時, 恒常設定されたステートパラメータを確認
         if (entity.stateTime == 0)
         {
@@ -360,7 +361,16 @@ public class StateDef
 
         if (_stateLoadTables == null)
             OnInitDef();
-        //メインのLUA仮想マシンに読み出すテキストを以下に記述.
+
+        //メインJS/TSスクリプトローダの読み出し・実行時挙動を以下に記述する.
+        // この時、選択されたFunctionを読み込ませる必要がある..
+
+        //テキストアセット読み出し可能なら実行.
+        if (LuaAsset != null)
+        {
+            _stateLoadTables = env.Eval<List<int>>(LuaAsset.text);
+        }
+        /*
         if (LuaAsset != null)
         {
             //env.DoString(LuaAsset.text);
