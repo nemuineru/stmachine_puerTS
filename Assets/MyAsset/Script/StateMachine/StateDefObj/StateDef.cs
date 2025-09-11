@@ -366,9 +366,10 @@ public class StateDef
         // この時、選択されたFunctionを読み込ませる必要がある..
 
         //テキストアセット読み出し可能なら実行.
+        //mjsファイルとして実行するのが良いのかね？
         if (LuaAsset != null)
         {
-            _stateLoadTables = env.Eval<List<int>>(LuaAsset.text);
+            _stateLoadTables = env.ExecuteModule<List<int>>("",LuaAsset.text);
         }
         /*
         if (LuaAsset != null)
