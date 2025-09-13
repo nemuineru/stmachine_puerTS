@@ -14,7 +14,8 @@ using Puerts.TSLoader;
 public class scriptEngine_Onload : MonoBehaviour
 {
     public TMPro.TMP_Text textMesh;
-    public static scriptEngine_Onload main;
+    static scriptEngine_Onload main;
+
     public Puerts.JsEnv scEnv;
     // Start is called before the first frame update
     void Awake()
@@ -23,8 +24,8 @@ public class scriptEngine_Onload : MonoBehaviour
         if (scEnv == null)
         {
             //scEnv = Puerts.WebGL.MainEnv.Get(new TSLoader());
+            scEnv = new Puerts.JsEnv();
         }
-        scEnv = new Puerts.JsEnv();
     }
     void Start()
     {

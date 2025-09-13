@@ -184,7 +184,7 @@ public class stateID
     public bool valueGet(int[] loadID, Entity entity)
     {
         bool retValue = false;
-        Puerts.JsEnv env = scriptEngine_Onload.main.scEnv;
+        //Puerts.JsEnv env = scriptEngine_Onload.main.scEnv;
         /*
         //Luaを使用するなら
         if (useLua && stLuaLoads != "")
@@ -250,12 +250,12 @@ public class StateDef
         return retDef;
     }
 
-    Puerts.JsEnv env;
+    //Puerts.JsEnv env;
 
     void OnInitDef()
     {
         //Debug.Log("Generating Metatables on " + StateDefID);
-        env = scriptEngine_Onload.main.scEnv;
+        //env = scriptEngine_Onload.main.scEnv;
 
         //Do I need to set-up global variables?
         //env.Global.Set("LC", new LC());
@@ -369,7 +369,7 @@ public class StateDef
         //mjsファイルとして実行するのが良いのかね？
         if (LuaAsset != null)
         {
-            _stateLoadTables = env.ExecuteModule<List<int>>("",LuaAsset.text);
+            //_stateLoadTables = env.ExecuteModule<List<int>>("",LuaAsset.text);
         }
         /*
         if (LuaAsset != null)

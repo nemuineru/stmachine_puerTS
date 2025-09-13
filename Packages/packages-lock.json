@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.tencent.puerts.core": {
-      "version": "file:C:/Users/sutea/source/repos/puerts_unity_demo/package",
+      "version": "file:D:/Users/nemuru/Documents/Unity Packages/PuerTS_Mult_2.2.2/upm",
       "depth": 0,
       "source": "local",
       "dependencies": {}
